@@ -1,0 +1,61 @@
+---
+ansible_connection: ansible.netcommon.httpapi 
+ansible_network_os: arista.eos.eos 
+ansible_user: test 
+ansible_password: test123
+ansible_become: true
+ansible_become_method: enable 
+ansible_httpapi_use_ssl: true 
+ansible_httpapi_validate_certs: false 
+fabric_name: FABRIC 
+
+underlay_routing_protocol: ebgp
+overlay_routing_protocol: ebgp
+
+local_users: 
+  - name: ansible
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$OdvRxMuEJpF9W8b0$LrHpnZJi0C7.MQkAZT5IQyCel2eIRFAmHPlwSEfYrb.Wbgwh.URQXYTWgzzcKAkRiQd.qT638yeZil3Ysqu8K/
+  - name: test
+    privilege: 15
+    role: network-admin
+    no_password: true
+
+bgp_peer_groups: 
+  evpn_overlay_peers:
+    password: Q4fqtbqcZ7oQuKfuWtNGRQ==
+  ipv4_underlay_peers:
+    password: 7x4B4rnJhZB438m9+BrBfQ==
+  mlag_ipv4_underlay_peer:
+    password: 4b21pAdCvWeAqpcKDFMdWw==
+
+p2p_uplinks_mtu: 1500 
+
+default_interfaces: 
+  - types: [ spine ]
+    platforms: [ default ]
+    uplink_interfaces: [ Ethernet1-2 ]
+    downlink_interfaces: [ Ethernet1-8 ]
+  - types: [ l3leaf ]
+    platforms: [ default ]
+    uplink_interfaces: [ Ethernet1-2 ]
+    mlag_interfaces: [ Ethernet3-4 ]
+    downlink_interfaces: [ Ethernet8 ]
+
+cvp_instance_ips:
+  - 192.168.8.254 
+terminattr_smashexcludes: "ale,flexCounter,hardware,kni,pulse,strata"
+terminattr_ingestexclude: "/Sysdb/cell/1/agent,/Sysdb/cell/2/agent"
+terminattr_disable_aaa: true
+
+name_servers: 
+  - 192.168.8.1
+
+custom_structured_configuration_ntp: 
+  local_interface:
+    name: Management1
+    vrf: MGMT
+  servers:
+    - name: 0.pool.ntp.org
+      vrf: MGMT
