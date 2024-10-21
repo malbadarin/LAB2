@@ -38,13 +38,13 @@ l3leaf:
       nodes:
         - name: dc1-leaf1a
           id: 1
-          mgmt_ip: 172.16.1.101/24
+          mgmt_ip: 192.168.8.101/24
           uplink_switch_interfaces: 
             - Ethernet1
             - Ethernet1
         - name: dc1-leaf1b
           id: 2
-          mgmt_ip: 172.16.1.102/24
+          mgmt_ip: 192.168.8.102/24
           uplink_switch_interfaces:
             - Ethernet2
             - Ethernet2
@@ -54,13 +54,13 @@ l3leaf:
       nodes:
         - name: dc1-leaf2a
           id: 3
-          mgmt_ip: 172.16.1.103/24
+          mgmt_ip: 192.168.8.103/24
           uplink_switch_interfaces:
             - Ethernet3
             - Ethernet3
         - name: dc1-leaf2b
           id: 4
-          mgmt_ip: 172.16.1.104/24
+          mgmt_ip: 192.168.8.104/24
           uplink_switch_interfaces:
             - Ethernet4
             - Ethernet4
