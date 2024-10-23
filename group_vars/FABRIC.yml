@@ -1,8 +1,8 @@
 ---
 ansible_connection: ansible.netcommon.httpapi 
 ansible_network_os: arista.eos.eos 
-ansible_user: test 
-ansible_password: test123
+ansible_user: cvpadmin 
+ansible_password: cvpadmin123
 ansible_become: true
 ansible_become_method: enable 
 ansible_httpapi_use_ssl: true 
@@ -13,11 +13,11 @@ underlay_routing_protocol: ebgp
 overlay_routing_protocol: ebgp
 
 local_users: 
-  - name: ansible
+  - name: cvpadmin
     privilege: 15
     role: network-admin
-    sha512_password: $6$OdvRxMuEJpF9W8b0$LrHpnZJi0C7.MQkAZT5IQyCel2eIRFAmHPlwSEfYrb.Wbgwh.URQXYTWgzzcKAkRiQd.qT638yeZil3Ysqu8K/
-  - name: test
+    sha512_password: $6$M6I853th2Ct7yzcG$F8sedSrBcmhKmzM53mk6CD/It.3IalKn5scRXs0r8h7609cHc4yVZLcVDFDxf.xXY48p3M3oRWlWSaXx3tDoz.
+  - name: admin
     privilege: 15
     role: network-admin
     no_password: true
@@ -44,7 +44,7 @@ default_interfaces:
     downlink_interfaces: [ Ethernet8 ]
 
 cvp_instance_ips:
-  - 192.168.8.254 
+  - 192.168.8.253 
 terminattr_smashexcludes: "ale,flexCounter,hardware,kni,pulse,strata"
 terminattr_ingestexclude: "/Sysdb/cell/1/agent,/Sysdb/cell/2/agent"
 terminattr_disable_aaa: true
